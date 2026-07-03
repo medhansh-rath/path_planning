@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Path Planning Benchmark Comparison</title>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; }
+    main { max-width: 1200px; margin: 0 auto; padding: 32px; }
+    .card { background: #111827; border: 1px solid #1f2937; border-radius: 18px; padding: 24px; box-shadow: 0 20px 60px rgba(15, 23, 42, 0.35); }
+    a { color: #38bdf8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { line-height: 1.9; }
+    code { background: #1e293b; padding: 0.15rem 0.35rem; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <h1>Path Planning Benchmark Comparison</h1>
+      <p>SVG plots generated from benchmark CSV output.</p>
+      <ul>
+        <li><a href="initial_plan_ms.svg">Initial plan time (ms)</a></li>
+<li><a href="total_replan_ms.svg">Total replanning time (ms)</a></li>
+<li><a href="total_wall_ms.svg">Total wall time (ms)</a></li>
+<li><a href="path_length.svg">Path length</a></li>
+<li><a href="path_cost.svg">Path cost</a></li>
+<li><a href="expansions.svg">Node expansions</a></li>
+<li><a href="memory_high_water_kb.svg">Memory high water (KB)</a></li>
+      </ul>
+    </div>
+  </main>
+</body>
+</html>

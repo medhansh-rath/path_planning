@@ -18,7 +18,12 @@ The repository is organized around a virtual planner interface so new algorithms
 - `path_planning::BenchmarkRunner` drives scenarios and collects metrics.
 - `path_planning::PhobosTerrainGenerator` builds seeded terrain with slope-like traversal costs and obstacles.
 - `path_planning::visualization::PpmSequenceVisualizer` exports frames when visualization is enabled.
-- `path_planning::FieldDStarPlanner` is present as the future implementation slot for the Field D* algorithm.
+- `path_planning::FieldDStarPlanner` provides the Field D* style any-angle planner used in the default comparison.
+
+## Scripts
+
+- `scripts/render_rover_motion.py` turns a frame directory into a rover-motion video with `ffmpeg`.
+- `scripts/compare_benchmarks.py` reads benchmark CSV output and writes SVG comparison plots plus a compact HTML index.
 
 ## Build
 
@@ -33,9 +38,21 @@ cmake --build build
 ./build/path_planning_benchmark --sizes=100,200,300,400,500,600,700,800 --seed=42 --visualize --output=artifacts/frames
 ```
 
+To render the rover motion into a video after a run:
+
+```bash
+python3 scripts/render_rover_motion.py --input artifacts/frames/field_dstar/100x100 --output artifacts/field_dstar_100.mp4
+```
+
+To generate benchmark comparison charts:
+
+```bash
+python3 scripts/compare_benchmarks.py --input benchmark_results.csv --output artifacts/plots
+```
+
 ## Notes
 
 - The benchmark harness is ready for Field D* and D* Lite implementations.
 - The planner interface is intentionally virtual so future algorithms can be added with minimal coupling.
 - Visualization uses PPM frame export to keep the repository dependency-light.
-- D* Lite is wired into the default planner list as a runnable incremental replanning reference.
+- The default benchmark set compares Field D* against D* Lite.

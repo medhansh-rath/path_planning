@@ -2,6 +2,7 @@
 
 #include "path_planning/PhobosTerrainGenerator.hpp"
 #include "path_planning/planners/AStarPlanner.hpp"
+#include "path_planning/planners/FieldDStarPlanner.hpp"
 #include "path_planning/planners/DStarLitePlanner.hpp"
 #include "path_planning/visualization/PpmSequenceVisualizer.hpp"
 
@@ -227,7 +228,8 @@ private:
 
 inline std::vector<PlannerSpec> defaultPlanners() {
   return {
-      PlannerSpec{"astar", [] { return std::make_unique<AStarPlanner>(); }},
+      PlannerSpec{"field_dstar",
+                  [] { return std::make_unique<FieldDStarPlanner>(); }},
       PlannerSpec{"dstar_lite",
                   [] { return std::make_unique<DStarLitePlanner>(); }},
   };

@@ -1,3 +1,3 @@
 planner,width,height,initial_plan_ms,total_replan_ms,total_wall_ms,memory_high_water_kb,path_length,path_cost,expansions,replan_count,injected_obstacles,reached_goal
-astar,20,20,0.975,0.000,0.980,29832.000,28.042,39.188,552,0,0,1
-dstar_lite,20,20,2.483,0.000,2.489,29832.000,28.627,39.119,293,0,0,1
+field_dstar,20,20,5.480,0.000,16.820,30016.000,28.042,39.628,298,0,0,1
+dstar_lite,20,20,2.374,0.000,3.632,30016.000,27.456,39.181,261,0,0,1
