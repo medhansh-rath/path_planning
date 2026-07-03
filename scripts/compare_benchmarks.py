@@ -21,6 +21,8 @@ METRICS = [
     ("total_wall_ms", "Total wall time (ms)"),
     ("path_length", "Path length"),
     ("path_cost", "Path cost"),
+    ("path_efficiency", "Path efficiency"),
+    ("turns", "Path turns"),
     ("expansions", "Node expansions"),
     ("memory_high_water_kb", "Memory high water (KB)"),
 ]

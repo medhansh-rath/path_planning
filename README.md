@@ -6,6 +6,7 @@ A C++ benchmark scaffold for comparing grid-based planners on Phobos-like terrai
 
 - Compare planners such as Field D* and D* Lite on grid sizes from 100x100 to 800x800.
 - Track planning time, replanning time, memory usage, path length, node expansions, and total traversal cost.
+- Track planning time, replanning time, memory usage, path length, path turns, and path efficiency.
 - Generate seeded terrain with smooth slope gradients and small obstacle clusters.
 - Optionally export visualization frames so rover motion can be reviewed after a run.
 - Support dynamic obstacle injection during execution to stress replanning.
@@ -24,6 +25,7 @@ The repository is organized around a virtual planner interface so new algorithms
 
 - `scripts/render_rover_motion.py` turns a frame directory into a rover-motion video with `ffmpeg`.
 - `scripts/compare_benchmarks.py` reads benchmark CSV output and writes SVG comparison plots plus a compact HTML index.
+- The comparison plots now include path-efficiency and turn-count views in addition to timing and cost metrics.
 
 ## Build
 

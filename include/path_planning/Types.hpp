@@ -54,7 +54,9 @@ struct BenchmarkMetrics {
   double memoryHighWaterKb = 0.0;
   double pathLength = 0.0;
   double pathCost = 0.0;
+  double pathEfficiency = 0.0;
   std::size_t expansions = 0;
+  std::size_t turns = 0;
   std::size_t replanCount = 0;
   std::size_t injectedObstacles = 0;
   bool reachedGoal = false;

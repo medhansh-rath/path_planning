@@ -10,6 +10,7 @@ CMakeFiles/path_planning_benchmark.dir/src/main.cpp.o
  /home/medhansh/path_planning/include/path_planning/Types.hpp
  /home/medhansh/path_planning/include/path_planning/planners/AStarPlanner.hpp
  /home/medhansh/path_planning/include/path_planning/planners/DStarLitePlanner.hpp
+ /home/medhansh/path_planning/include/path_planning/planners/FieldDStarPlanner.hpp
  /home/medhansh/path_planning/include/path_planning/visualization/PpmSequenceVisualizer.hpp
  /home/medhansh/path_planning/include/path_planning/visualization/Visualizer.hpp
  /usr/include/alloca.h

@@ -101,16 +101,19 @@ int main(int argc, char **argv) {
   path_planning::BenchmarkRunner::writeCsv(results, "benchmark_results.csv");
 
   std::cout << "planner,width,height,initial_plan_ms,total_replan_ms,total_"
-               "wall_ms,memory_high_water_kb,path_length,path_cost,expansions,"
-               "replan_count,injected_obstacles,reached_goal\n";
+               "wall_ms,memory_high_water_kb,path_length,path_cost,path_"
+               "efficiency,turns,expansions,replan_count,injected_obstacles,"
+               "reached_goal\n";
   std::cout << std::fixed << std::setprecision(3);
   for (const auto &row : results) {
     std::cout << row.plannerName << ',' << row.width << ',' << row.height << ','
               << row.initialPlanMs << ',' << row.totalReplanMs << ','
               << row.totalWallMs << ',' << row.memoryHighWaterKb << ','
-              << row.pathLength << ',' << row.pathCost << ',' << row.expansions
-              << ',' << row.replanCount << ',' << row.injectedObstacles << ','
-              << (row.reachedGoal ? 1 : 0) << '\n';
+              << row.pathLength << ',' << row.pathCost << ','
+              << row.pathEfficiency << ',' << row.turns << ','
+              << row.expansions << ',' << row.replanCount << ','
+              << row.injectedObstacles << ',' << (row.reachedGoal ? 1 : 0)
+              << '\n';
   }
 
   return 0;

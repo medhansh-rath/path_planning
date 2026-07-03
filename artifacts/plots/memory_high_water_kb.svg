@@ -5,15 +5,15 @@
 <line x1="90" y1="610" x2="900" y2="610" stroke="#334155" stroke-width="1.4"/>
 <line x1="90" y1="70" x2="90" y2="610" stroke="#334155" stroke-width="1.4"/>
 <line x1="90" y1="70.0" x2="900" y2="70.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="78" y="74.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">32,418</text>
+<text x="78" y="74.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">32,695</text>
 <line x1="90" y1="178.0" x2="900" y2="178.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="78" y="182.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">25,935</text>
+<text x="78" y="182.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">26,156</text>
 <line x1="90" y1="286.0" x2="900" y2="286.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="78" y="290.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">19,451</text>
+<text x="78" y="290.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">19,617</text>
 <line x1="90" y1="394.0" x2="900" y2="394.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="78" y="398.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">12,967</text>
+<text x="78" y="398.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">13,078</text>
 <line x1="90" y1="502.0" x2="900" y2="502.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="78" y="506.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">6,484</text>
+<text x="78" y="506.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">6,539</text>
 <line x1="90" y1="610.0" x2="900" y2="610.0" stroke="#e2e8f0" stroke-width="1"/>
 <text x="78" y="614.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">0.00</text>
 <line x1="495.0" y1="610" x2="495.0" y2="616" stroke="#334155" stroke-width="1"/>

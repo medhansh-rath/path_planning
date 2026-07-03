@@ -2,8 +2,8 @@
 
 #include "path_planning/PhobosTerrainGenerator.hpp"
 #include "path_planning/planners/AStarPlanner.hpp"
-#include "path_planning/planners/FieldDStarPlanner.hpp"
 #include "path_planning/planners/DStarLitePlanner.hpp"
+#include "path_planning/planners/FieldDStarPlanner.hpp"
 #include "path_planning/visualization/PpmSequenceVisualizer.hpp"
 
 #include <chrono>
@@ -63,18 +63,19 @@ public:
     if (!out) {
       throw std::runtime_error("Failed to open CSV file: " + filePath);
     }
-    out << "planner,width,height,initial_plan_ms,total_replan_ms,total_wall_ms,"
-           "memory_high_water_kb,path_length,path_cost,expansions,replan_count,"
-           "injected_obstacles,reached_goal\n";
+        out << "planner,width,height,initial_plan_ms,total_replan_ms,total_wall_ms,"
+          "memory_high_water_kb,path_length,path_cost,path_efficiency,turns,"
+          "expansions,replan_count,injected_obstacles,reached_goal\n";
     out << std::fixed << std::setprecision(3);
     for (const BenchmarkMetrics &result : results) {
       out << result.plannerName << ',' << result.width << ',' << result.height
           << ',' << result.initialPlanMs << ',' << result.totalReplanMs << ','
           << result.totalWallMs << ',' << result.memoryHighWaterKb << ','
-          << result.pathLength << ',' << result.pathCost << ','
-          << result.expansions << ',' << result.replanCount << ','
-          << result.injectedObstacles << ',' << (result.reachedGoal ? 1 : 0)
-          << '\n';
+         << result.pathLength << ',' << result.pathCost << ','
+         << result.pathEfficiency << ',' << result.turns << ','
+         << result.expansions << ',' << result.replanCount << ','
+         << result.injectedObstacles << ',' << (result.reachedGoal ? 1 : 0)
+         << '\n';
     }
   }
 
@@ -179,11 +180,52 @@ private:
     metrics.memoryHighWaterKb = currentMemoryHighWaterKb();
     metrics.pathLength = map->estimatePathLength(path);
     metrics.pathCost = map->pathTraversalCost(path);
+    metrics.pathEfficiency = pathEfficiency(*map, path);
+    metrics.turns = countTurns(path);
     metrics.expansions = planner->metrics().expansions;
     metrics.replanCount = planner->metrics().replanCount;
     metrics.injectedObstacles = injectedObstacles;
     metrics.reachedGoal = (rover == goal);
     return metrics;
+  }
+
+  static std::size_t countTurns(const std::vector<Cell> &path) {
+    if (path.size() < 3) {
+      return 0;
+    }
+
+    std::size_t turns = 0;
+    int previousDx = path[1].x - path[0].x;
+    int previousDy = path[1].y - path[0].y;
+    for (std::size_t i = 2; i < path.size(); ++i) {
+      const int currentDx = path[i].x - path[i - 1].x;
+      const int currentDy = path[i].y - path[i - 1].y;
+      if (currentDx != previousDx || currentDy != previousDy) {
+        ++turns;
+      }
+      previousDx = currentDx;
+      previousDy = currentDy;
+    }
+    return turns;
+  }
+
+  static double straightLineDistance(const std::vector<Cell> &path) {
+    if (path.size() < 2) {
+      return 0.0;
+    }
+    const Cell &start = path.front();
+    const Cell &goal = path.back();
+    const double dx = static_cast<double>(goal.x - start.x);
+    const double dy = static_cast<double>(goal.y - start.y);
+    return std::sqrt(dx * dx + dy * dy);
+  }
+
+  static double pathEfficiency(const GridMap &map, const std::vector<Cell> &path) {
+    const double directDistance = straightLineDistance(path);
+    if (directDistance <= 0.0) {
+      return 0.0;
+    }
+    return map.estimatePathLength(path) / directDistance;
   }
 
   static std::vector<CellUpdate>

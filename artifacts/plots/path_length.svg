@@ -5,23 +5,23 @@
 <line x1="90" y1="610" x2="900" y2="610" stroke="#334155" stroke-width="1.4"/>
 <line x1="90" y1="70" x2="90" y2="610" stroke="#334155" stroke-width="1.4"/>
 <line x1="90" y1="70.0" x2="900" y2="70.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="78" y="74.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">30.3</text>
+<text x="78" y="74.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">30.9</text>
 <line x1="90" y1="178.0" x2="900" y2="178.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="78" y="182.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">24.2</text>
+<text x="78" y="182.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">24.7</text>
 <line x1="90" y1="286.0" x2="900" y2="286.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="78" y="290.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">18.2</text>
+<text x="78" y="290.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">18.6</text>
 <line x1="90" y1="394.0" x2="900" y2="394.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="78" y="398.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">12.1</text>
+<text x="78" y="398.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">12.4</text>
 <line x1="90" y1="502.0" x2="900" y2="502.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="78" y="506.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">6.06</text>
+<text x="78" y="506.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">6.18</text>
 <line x1="90" y1="610.0" x2="900" y2="610.0" stroke="#e2e8f0" stroke-width="1"/>
 <text x="78" y="614.0" text-anchor="end" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">0.00</text>
 <line x1="495.0" y1="610" x2="495.0" y2="616" stroke="#334155" stroke-width="1"/>
 <text x="495.0" y="636" text-anchor="middle" font-size="12" font-family="Inter, Arial, sans-serif" fill="#475569">20x20</text>
-<polyline fill="none" stroke="#0f766e" stroke-width="3" points="495.0,120.4"/>
-<circle cx="495.0" cy="120.4" r="4.5" fill="#0f766e" stroke="#ffffff" stroke-width="1.5"/>
-<polyline fill="none" stroke="#2563eb" stroke-width="3" points="495.0,110.0"/>
-<circle cx="495.0" cy="110.0" r="4.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
+<polyline fill="none" stroke="#0f766e" stroke-width="3" points="495.0,110.0"/>
+<circle cx="495.0" cy="110.0" r="4.5" fill="#0f766e" stroke="#ffffff" stroke-width="1.5"/>
+<polyline fill="none" stroke="#2563eb" stroke-width="3" points="495.0,120.2"/>
+<circle cx="495.0" cy="120.2" r="4.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
 <text x="924" y="82" font-size="16" font-family="Inter, Arial, sans-serif" fill="#0f172a">Legend</text>
 <rect x="924" y="94" width="16" height="16" rx="3" fill="#0f766e"/>
 <text x="948" y="107" font-size="13" font-family="Inter, Arial, sans-serif" fill="#334155">dstar_lite</text>
