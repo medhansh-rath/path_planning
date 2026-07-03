@@ -8,8 +8,8 @@
 namespace path_planning {
 
 struct Cell {
-  int x = 0;
-  int y = 0;
+  std::uint16_t x = 0;
+  std::uint16_t y = 0;
 };
 
 inline bool operator==(const Cell &lhs, const Cell &rhs) {
@@ -22,11 +22,9 @@ inline bool operator!=(const Cell &lhs, const Cell &rhs) {
 
 struct CellHash {
   std::size_t operator()(const Cell &cell) const noexcept {
-    const std::size_t hx =
-        static_cast<std::size_t>(static_cast<std::uint32_t>(cell.x));
-    const std::size_t hy =
-        static_cast<std::size_t>(static_cast<std::uint32_t>(cell.y));
-    return (hx << 32) ^ (hy + 0x9e3779b97f4a7c15ULL + (hx << 6) + (hx >> 2));
+    const std::size_t packed = (static_cast<std::size_t>(cell.x) << 16) |
+                               static_cast<std::size_t>(cell.y);
+    return packed ^ (packed >> 23) ^ (packed << 11);
   }
 };
 

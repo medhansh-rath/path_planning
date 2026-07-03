@@ -85,7 +85,9 @@ public:
                       (0.65 * slopeMagnitude + 0.15 * std::abs(center) +
                        0.12 * localNoise);
         const bool obstacle = isObstacleCell(x, y, uniform01(rng));
-        map.setCell(Cell{x, y}, traversalCost, obstacle);
+        map.setCell(Cell{static_cast<std::uint16_t>(x),
+                         static_cast<std::uint16_t>(y)},
+                    traversalCost, obstacle);
       }
     }
 

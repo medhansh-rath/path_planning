@@ -92,7 +92,8 @@ private:
     auto map = std::make_shared<GridMap>(generator.generate());
 
     const Cell start{0, 0};
-    const Cell goal{size - 1, size - 1};
+    const Cell goal{static_cast<std::uint16_t>(size - 1),
+            static_cast<std::uint16_t>(size - 1)};
     map->setCell(start, 1.0, false);
     map->setCell(goal, 1.0, false);
 
@@ -241,7 +242,10 @@ private:
         candidate = path[pathIndex + i];
       } else {
         const Cell pivot = path.empty() ? start : path[pathIndex];
-        candidate = Cell{pivot.x + radiusDist(rng), pivot.y + radiusDist(rng)};
+        candidate = Cell{static_cast<std::uint16_t>(static_cast<int>(pivot.x) +
+                                                     radiusDist(rng)),
+                         static_cast<std::uint16_t>(static_cast<int>(pivot.y) +
+                                                     radiusDist(rng))};
       }
       if (!map.inBounds(candidate) || candidate == start || candidate == goal ||
           map.isBlocked(candidate)) {

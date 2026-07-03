@@ -36,7 +36,8 @@ public:
     const double maxCost = std::max(1.0, map.maxTraversalCost());
     for (int y = 0; y < map.height(); ++y) {
       for (int x = 0; x < map.width(); ++x) {
-        const Cell cell{x, y};
+        const Cell cell{static_cast<std::uint16_t>(x),
+            static_cast<std::uint16_t>(y)};
         const auto color = colorForCell(map, cell, pathCells.count(cell) != 0,
                                         cell == rover, cell == goal, maxCost);
         for (int sy = 0; sy < scale_; ++sy) {

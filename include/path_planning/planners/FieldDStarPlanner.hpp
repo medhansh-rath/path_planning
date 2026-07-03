@@ -202,7 +202,8 @@ private:
         error += dx;
         y0 += sy;
       }
-      cells.push_back(Cell{x0, y0});
+      cells.push_back(Cell{static_cast<std::uint16_t>(x0),
+                           static_cast<std::uint16_t>(y0)});
     }
 
     return cells;

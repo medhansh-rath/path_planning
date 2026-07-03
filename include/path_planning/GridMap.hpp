@@ -7,6 +7,7 @@
 #include <cmath>
 #include <cstdint>
 #include <limits>
+#include <utility>
 #include <stdexcept>
 #include <vector>
 
@@ -29,7 +30,8 @@ public:
   int height() const { return height_; }
 
   bool inBounds(Cell cell) const {
-    return cell.x >= 0 && cell.y >= 0 && cell.x < width_ && cell.y < height_;
+    return static_cast<int>(cell.x) < width_ &&
+           static_cast<int>(cell.y) < height_;
   }
 
   std::size_t index(Cell cell) const {
@@ -38,8 +40,8 @@ public:
   }
 
   Cell cellFromIndex(std::size_t index) const {
-    return Cell{static_cast<int>(index % static_cast<std::size_t>(width_)),
-                static_cast<int>(index / static_cast<std::size_t>(width_))};
+    return Cell{static_cast<std::uint16_t>(index % static_cast<std::size_t>(width_)),
+                static_cast<std::uint16_t>(index / static_cast<std::size_t>(width_))};
   }
 
   bool isBlocked(Cell cell) const { return blocked_.at(index(cell)) != 0; }
@@ -73,27 +75,41 @@ public:
   }
 
   std::vector<Cell> neighbors(Cell cell) const {
-    static constexpr std::array<Cell, 8> offsets{{
-        Cell{-1, -1},
-        Cell{0, -1},
-        Cell{1, -1},
-        Cell{-1, 0},
-        Cell{1, 0},
-        Cell{-1, 1},
-        Cell{0, 1},
-        Cell{1, 1},
+    static constexpr std::array<std::pair<int, int>, 8> offsets{{
+        std::pair<int, int>{-1, -1},
+        std::pair<int, int>{0, -1},
+        std::pair<int, int>{1, -1},
+        std::pair<int, int>{-1, 0},
+        std::pair<int, int>{1, 0},
+        std::pair<int, int>{-1, 1},
+        std::pair<int, int>{0, 1},
+        std::pair<int, int>{1, 1},
     }};
 
     std::vector<Cell> result;
     result.reserve(8);
-    for (const Cell &offset : offsets) {
-      Cell next{cell.x + offset.x, cell.y + offset.y};
+    for (const std::pair<int, int> &offset : offsets) {
+      const int nextX = static_cast<int>(cell.x) + offset.first;
+      const int nextY = static_cast<int>(cell.y) + offset.second;
+      if (nextX < 0 || nextY < 0) {
+        continue;
+      }
+      Cell next{static_cast<std::uint16_t>(nextX), static_cast<std::uint16_t>(nextY)};
       if (!inBounds(next) || isBlocked(next)) {
         continue;
       }
-      if (std::abs(offset.x) == 1 && std::abs(offset.y) == 1) {
-        const Cell adjacentA{cell.x + offset.x, cell.y};
-        const Cell adjacentB{cell.x, cell.y + offset.y};
+      if (std::abs(offset.first) == 1 && std::abs(offset.second) == 1) {
+        const int adjacentAX = static_cast<int>(cell.x) + offset.first;
+        const int adjacentAY = static_cast<int>(cell.y);
+        const int adjacentBX = static_cast<int>(cell.x);
+        const int adjacentBY = static_cast<int>(cell.y) + offset.second;
+        if (adjacentAX < 0 || adjacentAY < 0 || adjacentBX < 0 || adjacentBY < 0) {
+          continue;
+        }
+        const Cell adjacentA{static_cast<std::uint16_t>(adjacentAX),
+                             static_cast<std::uint16_t>(adjacentAY)};
+        const Cell adjacentB{static_cast<std::uint16_t>(adjacentBX),
+                             static_cast<std::uint16_t>(adjacentBY)};
         if (!inBounds(adjacentA) || !inBounds(adjacentB) ||
             isBlocked(adjacentA) || isBlocked(adjacentB)) {
           continue;
